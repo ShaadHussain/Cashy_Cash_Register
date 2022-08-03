@@ -2,3 +2,6 @@
 10
 5
 1
+
+
+# Important: Look at Python DictReader for converting a CSV file into a dict
