@@ -103,7 +103,7 @@ def makeChange(price, payment):
 
     if change > 0:
 
-        replenishRegister(price)
+        replenishRegister(price) # adds the payment - change to the register
 
         for amount in amounts:
 
