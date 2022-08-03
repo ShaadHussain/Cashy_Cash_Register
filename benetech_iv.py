@@ -1,3 +1,6 @@
+import csv
+
+
 currency_map = {}
 
 def init_curr_map():
@@ -13,6 +16,56 @@ def init_curr_map():
     currency_map[10.0] = 100
     currency_map[20.0] = 150
 
+def get_register(file_name = "register.csv"):
+    with open('register.csv', mode='r+') as csv_file:
+        csv_reader = csv.reader(csv_file)
+
+        line_ct = 0
+
+        amt_num_map = {}
+
+        amounts = []
+        amounts_nums = []
+        for row in csv_reader:
+            if line_ct == 0:
+                line_ct += 1
+
+                # amounts = ",".join(row)
+                amounts = list(row)
+
+                amounts = [int(num) for num in amounts]
+
+                print(f"Row 0: {amounts}")
+
+
+            elif line_ct == 1:
+                # amounts_nums = ",".join(row)
+                amounts_nums = list(row)
+
+                amounts_nums = [int(num) for num in amounts_nums]
+
+                print(f"Row 1: {amounts_nums}")
+                # line_ct += 1
+
+
+    for i in range(len(amounts)):
+        amt_num_map[amounts[i]] = amounts_nums[i]
+    
+    return amt_num_map
+
+def update_register(register_map):
+    with open('register.csv', 'w') as write_file:
+        writer = csv.writer(write_file)
+
+        header_row = []
+        val_row = []
+
+        for reg_key in register_map:
+            header_row.append(reg_key)
+            val_row.append(register_map[reg_key])
+
+        writer.writerow(header_row)
+        writer.writerow(val_row)
 
 
 # Taking the user's payment (deposit) and allocating it to register
@@ -22,7 +75,6 @@ def replenishRegister(deposit):
     deposit = round(deposit, 2)
 
     for amount in amounts:
-
             while deposit >= amount:
 
                 print(f"Curr amount: {amount}")
