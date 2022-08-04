@@ -33,17 +33,13 @@ class Form1(Form1Template):
     self.label_20_dol.text = 100
     
     
-    
-    
-  
-  
-  def replenishRegister(self, deposit, register_map):
+  def replenishRegister(self, deposit):
         deposit = round(deposit, 2)
         
-        for amt in self.amounts:
+        for amount in self.amounts:
           while deposit >= amount:
             self.currency_map[amount] += 1
-            deposit -= amt
+            deposit -= amount
             
             deposit = round(deposit, 2)
   
@@ -54,11 +50,13 @@ class Form1(Form1Template):
     change = (payment - price)
     change = round(change, 2)
     
+    self.total_change = change
+    
     if change > 0:
-      replenishRegister(price, register_map)
+      self.replenishRegister(price)
     
       for amount in self.amounts:
-        while change >= amount and currency_map[amount] != 0:
+        while change >= amount and self.currency_map[amount] != 0:
             change -= amount
   
             change = round(change, 2)
@@ -66,8 +64,8 @@ class Form1(Form1Template):
   
             user_change_map[amount] = user_change_map.get(amount, 0) + 1
         
-        if change > 0:
-          print("We're sorry! Due to a nationwide coin/bill shortage we're not able to provide you change.")
+#         if change > 0:
+#           print("We're sorry! Due to a nationwide coin/bill shortage we're not able to provide you change.")
     elif change < 0:
       print("Error! Payment not Sufficient.")
     
@@ -81,18 +79,20 @@ class Form1(Form1Template):
   def populateChangeUI(self, user_change_map):
     
     # Coins 
-    self.label_1c = user_change_map[.01]
-    self.label_5c = user_change_map[.05]
-    self.label_10c = user_change_map[.1]
-    self.label_25c = user_change_map[.25]
-    self.label_50c = user_change_map[.5]
+    self.label_1c.text = user_change_map.get(.01,0)
+    self.label_5c.text = user_change_map.get(.05,0)
+    self.label_10c.text = user_change_map.get(.1,0)
+    self.label_25c.text = user_change_map.get(.25,0)
+    self.label_50c.text = user_change_map.get(.50, 0)
     
     # Bills
-    self.label_1_dol = user_change_map[1]
-    self.label_5_dol = user_change_map[5]
-    self.label_10_dol = user_change_map[10]
-    self.label_20_dol = user_change_map[20]
-      
+    self.label_1_dol.text = user_change_map.get(1, 0)
+    self.label_5_dol.text = user_change_map.get(5, 0)
+    self.label_10_dol.text = user_change_map.get(10, 0)
+    self.label_20_dol.text = user_change_map.get(20, 0)
+    
+    self.total_change_lbl.text = self.total_change
+    
       
 
     
@@ -112,6 +112,7 @@ class Form1(Form1Template):
       user_change_map = self.makeChange(price, payment)
       
       self.populateChangeUI(user_change_map)
+      
     elif not self.text_box_payment.text:
       print("Please enter in a payment amount.")
     elif not self.text_box_price.text:
@@ -122,14 +123,12 @@ class Form1(Form1Template):
       
       
 
-      
-
-    
-    
-
   def button_2_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print(f"In button 2!")
+    print(f"In button 2! Resetting register")
+    
+    self.resetRegister()
+    
 
 
 
