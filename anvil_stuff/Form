@@ -11,26 +11,34 @@ class Form1(Form1Template):
 
     for amt in self.amounts:
       self.currency_map[amt] = 100
-    
 
-    self.label_1c.text = self.currency_map[0.01]
-    # Any code you write here will run when the form opens.
-    
-    
-  def resetRegister(self):
-    
+
+    self.grid_panel_error.visible = False
     # Coins 
-    self.label_1c.text = 100
-    self.label_5c.text = 100
-    self.label_10c.text = 100
-    self.label_25c.text = 100
-    self.label_50c.text = 100
+  
+    self.label_1c.text = 0
+    self.label_5c.text = 0
+    self.label_10c.text = 0
+    self.label_25c.text = 0
+    self.label_50c.text = 0
     
     # Bills
-    self.label_1_dol.text = 100
-    self.label_5_dol.text = 100
-    self.label_10_dol.text = 100
-    self.label_20_dol.text = 100
+    self.label_1_dol.text = 0
+    self.label_5_dol.text = 0
+    self.label_10_dol.text = 0
+    self.label_20_dol.text = 0
+    # Any code you write here will run when the form opens.
+    
+  
+  def showErrorMsg(self, msg):
+    self.label_error.text = msg
+    self.grid_panel_error.visible = True
+    
+  def resetRegister(self):
+        
+    for amt in self.amounts:
+      self.currency_map[amt] = 100
+
     
     
   def replenishRegister(self, deposit):
@@ -64,13 +72,19 @@ class Form1(Form1Template):
   
             user_change_map[amount] = user_change_map.get(amount, 0) + 1
         
-#         if change > 0:
-#           print("We're sorry! Due to a nationwide coin/bill shortage we're not able to provide you change.")
+      if change > 0:
+        print("We're sorry! Due to a nationwide coin/bill shortage we're not able to provide you change.")
+        
+        self.showErrorMsg("Sorry no change! Coin/bill shortage.")
     elif change < 0:
       print("Error! Payment not Sufficient.")
+      self.showErrorMsg("Error! Payment not Sufficient.")
+      
     
     else:
       print("No change! Have a great day.")
+      self.showErrorMsg("No change! Have a great day.")
+      
     
     return user_change_map
 
@@ -113,12 +127,17 @@ class Form1(Form1Template):
       
       self.populateChangeUI(user_change_map)
       
-    elif not self.text_box_payment.text:
-      print("Please enter in a payment amount.")
+    elif not self.text_box_payment.text and not self.text_box_price.text:
+      print("Please enter in a price and payment amount.")
+      self.showErrorMsg("Please enter in a price and payment amount.")
     elif not self.text_box_price.text:
       print("Please enter in a price.")
+      self.showErrorMsg("Please enter in a price.")
+      
     else:
-      print("Please enter in a price and payment amount.")
+      print("Please enter in a payment amount.")
+      self.showErrorMsg("Please enter in a payment amount.")
+      
       
       
       
@@ -129,6 +148,11 @@ class Form1(Form1Template):
     
     self.resetRegister()
     
+
+  def button_close_error_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.grid_panel_error.visible = False
+
 
 
 
