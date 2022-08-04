@@ -31,24 +31,49 @@ class Form1(Form1Template):
     # Any code you write here will run when the form opens.
     
     self.grid_panel_dollar.visible = False
+    self.grid_panel_register.visible = False
+    
     
   
   def showErrorMsg(self, msg):
     self.label_error.text = msg
     self.grid_panel_error.visible = True
     
+    
+  def setRegisFromMap(self):
+    
+    self.lbl_1c_regis.text = self.currency_map[.01]
+    self.lbl_5c_regis.text = self.currency_map[.05]
+    self.lbl_10c_regis.text = self.currency_map[.1]
+    self.lbl_25c_regis.text = self.currency_map[.25]
+    self.lbl_50c_regis.text = self.currency_map[.50]
+    
+    self.label_1_dol_regis.text = self.currency_map[1]
+    self.label_5_dol_regis.text = self.currency_map[5]
+    self.label_10_dol_regis.text = self.currency_map[10]
+    self.label_20_dol_regis.text = self.currency_map[20]
+      
+      
+    
   def resetRegister(self):
         
     for amt in self.amounts:
-      self.currency_map[amt] = 100
+      self.currency_map[amt] = 10
+      
+    self.setRegisFromMap()
+    
 
-    
-    
   def replenishRegister(self, deposit):
         deposit = round(deposit, 2)
+      
+        print(f"Deposit: {deposit}")
         
         for amount in self.amounts:
           while deposit >= amount:
+            
+            print(f"In loop deposit: {deposit}")
+            print(f"In loop amount: {amount}")
+            
             self.currency_map[amount] += 1
             deposit -= amount
             
@@ -77,17 +102,20 @@ class Form1(Form1Template):
         
       if change > 0:
         print("We're sorry! Due to a nationwide coin/bill shortage we're not able to provide you change.")
-        
         self.showErrorMsg("Sorry no change! Coin/bill shortage.")
+      else:
+        self.setRegisFromMap()
     elif change < 0:
       print("Error! Payment not Sufficient.")
       self.showErrorMsg("Error! Payment not Sufficient.")
       
     
-    else:
+    elif change == 0:
+      self.replenishRegister(price)
       print("No change! Have a great day.")
       self.showErrorMsg("No change! Have a great day.")
-      
+    
+    
     
     return user_change_map
 
@@ -131,15 +159,15 @@ class Form1(Form1Template):
         user_change_map = self.makeChange(price, payment)
       
         self.populateChangeUI(user_change_map)
+        
       except ValueError:
         print("Error! Please make sure all values are numeric.")
         self.showErrorMsg("Error! Please make sure all values are numeric.")
-      
      
-      
     elif not self.text_box_payment.text and not self.text_box_price.text:
       print("Please enter in a price and payment amount.")
       self.showErrorMsg("Please enter in a price and payment amount.")
+      
     elif not self.text_box_price.text:
       print("Please enter in a price.")
       self.showErrorMsg("Please enter in a price.")
@@ -147,9 +175,6 @@ class Form1(Form1Template):
     else:
       print("Please enter in a payment amount.")
       self.showErrorMsg("Please enter in a payment amount.")
-      
-      
-      
       
 
   def button_2_click(self, **event_args):
@@ -163,3 +188,28 @@ class Form1(Form1Template):
     """This method is called when the button is clicked"""
     self.grid_panel_error.visible = False
 
+  def show_register_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    
+    if not self.grid_panel_register.visible:
+      self.grid_panel_register.visible = True
+      self.show_register_btn.text = "Hide Register"
+    else:
+      self.grid_panel_register.visible = False
+      self.show_register_btn.text = "Show Register"
+    
+    
+
+  def reset_register_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    self.resetRegister()
+
+
+
+
+
+
+
+
+
+  

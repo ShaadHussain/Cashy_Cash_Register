@@ -115,7 +115,8 @@ def makeChange(price, payment):
 
                 user_change_map[amount] = user_change_map.get(amount, 0) + 1
             
-
+            
+    
         print(f"-- Final change -- ")
 
         for amount in amounts:
