@@ -1,6 +1,5 @@
 import csv
 
-
 currency_map = {}
 
 def p(val):
@@ -18,15 +17,15 @@ def init_curr_map():
     # currency_map[10.0] = 100
     # currency_map[20.0] = 150
 
-    currency_map[0.01] = 0
-    currency_map[0.05] = 0
-    currency_map[0.1] = 0
-    currency_map[0.25] = 0
-    currency_map[0.5] = 0
-    currency_map[1.0] = 0
-    currency_map[5.0] = 0
-    currency_map[10.0] = 0
-    currency_map[20.0] = 0
+    currency_map[0.01] = 10
+    currency_map[0.05] = 10
+    currency_map[0.1] = 10
+    currency_map[0.25] = 10
+    currency_map[0.5] = 10
+    currency_map[1.0] = 10
+    currency_map[5.0] = 10
+    currency_map[10.0] = 10
+    currency_map[20.0] = 10
 
     return currency_map
 
@@ -116,27 +115,27 @@ def makeChange(price, payment, register_map):
         print(f"Register map AFTER replenishing: {register_map}")
 
 
-        # for amount in amounts:
-        #     while change >= amount and currency_map[amount] != 0:
+        for amount in amounts:
+            while change >= amount and currency_map[amount] != 0:
 
-        #         print(f"Curr amount: {amount}")
-        #         print(f"Curr change before: {change}")
+                print(f"Curr amount: {amount}")
+                print(f"Curr change before: {change}")
 
-        #         change -= amount
+                change -= amount
 
-        #         change = round(change, 2)
-        #         currency_map[amount] -= 1
+                change = round(change, 2)
+                currency_map[amount] -= 1
 
-        #         user_change_map[amount] = user_change_map.get(amount, 0) + 1
+                user_change_map[amount] = user_change_map.get(amount, 0) + 1
             
 
-        # print(f"-- Final change -- ")
+        print(f"-- Final change -- ")
 
-        # for amount in amounts:
-        #     if amount >= 1.0:
-        #         print(f"Num of ${amount}: {user_change_map.get(amount, 0)}")
-        #     elif 0 <= amount < 1.0:
-        #         print(f"Num of {amount}¢: {user_change_map.get(amount, 0)}")
+        for amount in amounts:
+            if amount >= 1.0:
+                print(f"Num of ${amount}: {user_change_map.get(amount, 0)}")
+            elif 0 <= amount < 1.0:
+                print(f"Num of {amount}¢: {user_change_map.get(amount, 0)}")
 
         
     elif change < 0:
