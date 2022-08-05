@@ -1,5 +1,6 @@
 import pytest
 import register
+# from tests.register import replenishRegister
 # from tests.register import makeChange
 
 
@@ -150,7 +151,7 @@ def test_change_not_enough_in_register():
     correct_str = "No money in register!"
     assert user_ret == correct_str
 
-@pytest.mark.ten
+@pytest.mark.eleven
 def test_bad_input_nonnumeric():
     amounts = [20.0, 10.0, 5.0, 1.0, 0.5, 0.25, 0.1, 0.05, 0.01]
     register_map = {}
@@ -164,7 +165,7 @@ def test_bad_input_nonnumeric():
     correct_str = "Error! Values are not numbers"
     assert user_ret == correct_str
 
-@pytest.mark.eleven
+@pytest.mark.twelve
 def test_bad_input_negative():
     amounts = [20.0, 10.0, 5.0, 1.0, 0.5, 0.25, 0.1, 0.05, 0.01]
     register_map = {}
@@ -177,4 +178,58 @@ def test_bad_input_negative():
     # correct_map = {0.1: 8, 0.05: 2}
     correct_str = "Error! Non-negative numbers"
     assert user_ret == correct_str
+
+'''Testing replenishRegister() - We don't need to check for bad input because it's a 
+    method internal to makeChange(), which already checks for that.'''
+
+@pytest.mark.thirteen
+def test_replenish_reg():
+    amounts = [20.0, 10.0, 5.0, 1.0, 0.5, 0.25, 0.1, 0.05, 0.01]
+    register_map = {}
+
+    for amount in amounts:
+        register_map[amount] = 0
+    
+    register.replenishRegister(1.53, register_map)
+
+    assert register_map[1.0] == 1
+    assert register_map[.5] == 1
+    assert register_map[.01] == 3
+
+@pytest.mark.fourteen
+def test_replenish_reg_2():
+    amounts = [20.0, 10.0, 5.0, 1.0, 0.5, 0.25, 0.1, 0.05, 0.01]
+    register_map = {}
+
+    for amount in amounts:
+        register_map[amount] = 0
+    
+    register.replenishRegister(100.99, register_map)
+
+    assert register_map[20] == 5
+    assert register_map[.5] == 1
+    assert register_map[.25] == 1
+    assert register_map[.1] == 2
+    assert register_map[.01] == 4
+
+@pytest.mark.fifteen
+def test_replenish_reg_3():
+    amounts = [20.0, 10.0, 5.0, 1.0, 0.5, 0.25, 0.1, 0.05, 0.01]
+    register_map = {}
+
+    for amount in amounts:
+        register_map[amount] = 0
+    
+    register.replenishRegister(35.43, register_map)
+
+    assert register_map[20] == 1
+    assert register_map[10] == 1
+    assert register_map[5] == 1
+    assert register_map[.25] == 1
+    assert register_map[.1] == 1
+    assert register_map[.05] == 1
+    assert register_map[.01] == 3
+
+    
+
 
