@@ -61,9 +61,9 @@ class Form1(Form1Template):
   def resetRegister(self):
         
     for amt in self.amounts:
-      self.currency_map[amt] = 10
+      self.currency_map[amt] = 20
     
-    self.currency_map[0.1] = 0
+#     self.currency_map[0.1] = 0
       
     self.setRegisFromMap()
     
@@ -93,13 +93,18 @@ class Form1(Form1Template):
   def makeChange(self, price, payment):
     user_change_map = {}
     
+    if payment < 0 or price < 0:
+      print("Error! Negative values.")
+      self.showErrorMsg("Error! Negative values.")
+      return user_change_map
+    
     change = (payment - price)
     change = round(change, 2)
     
     self.total_change = change
     
     if change > 0:
-      self.replenishRegister(price)
+#       self.replenishRegister(price)
     
       for amount in self.amounts:
         while change >= amount and self.currency_map[amount] != 0:
@@ -116,16 +121,16 @@ class Form1(Form1Template):
       else:
         print("Calling setRegis in makeChange else")
         self.setRegisFromMap()
+        self.replenishRegister(price)
+        
     elif change < 0:
       print("Error! Payment not Sufficient.")
       self.showErrorMsg("Error! Payment not Sufficient.")
-      
     
     elif change == 0:
       self.replenishRegister(price)
       print("No change! Have a great day.")
       self.showErrorMsg("No change! Have a great day.")
-    
     
     
     return user_change_map
@@ -147,7 +152,7 @@ class Form1(Form1Template):
     self.label_10_dol.text = user_change_map.get(10, 0)
     self.label_20_dol.text = user_change_map.get(20, 0)
     
-    self.total_change_lbl.text = "$" + str(round(self.total_change, 2))
+#     self.total_change_lbl.text = "$" + str(round(self.total_change_lbl.text, 2))
     
     self.grid_panel_dollar.visible = True
     
@@ -165,11 +170,22 @@ class Form1(Form1Template):
     if self.text_box_payment.text and self.text_box_price.text:
       
       try:
+        
         price = float(self.text_box_price.text)
         payment = float(self.text_box_payment.text)
-        user_change_map = self.makeChange(price, payment)
-      
-        self.populateChangeUI(user_change_map)
+        
+        if price < 0 or payment < 0:
+          print("Error! Negative values.")
+          self.showErrorMsg("Error! Negative values.")
+        else:
+          
+          
+          user_change_map = self.makeChange(price, payment)
+        
+          self.populateChangeUI(user_change_map)
+          
+          if self.grid_panel_error.visible:
+            self.grid_panel_error.visible = False
         
       except ValueError:
         print("Error! Please make sure all values are numeric.")
@@ -202,6 +218,9 @@ class Form1(Form1Template):
   def show_register_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
     
+    if self.grid_panel_error.visible:
+            self.grid_panel_error.visible = False
+    
     if not self.grid_panel_register.visible:
       self.grid_panel_register.visible = True
       self.show_register_btn.text = "Hide Register"
@@ -213,14 +232,8 @@ class Form1(Form1Template):
 
   def reset_register_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
+    if self.grid_panel_error.visible:
+            self.grid_panel_error.visible = False
+        
     self.resetRegister()
 
-
-
-
-
-
-
-
-
-  
