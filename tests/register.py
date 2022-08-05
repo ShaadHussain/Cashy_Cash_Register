@@ -19,7 +19,7 @@ def init_curr_map():
 
     currency_map[0.01] = 10
     currency_map[0.05] = 10
-    currency_map[0.1] = 0
+    currency_map[0.1] = 10
     currency_map[0.25] = 10
     currency_map[0.5] = 10
     currency_map[1.0] = 10
@@ -54,6 +54,16 @@ def makeChange(price, payment, register_map):
     amounts = [20.0, 10.0, 5.0, 1.0, 0.5, 0.25, 0.1, 0.05, 0.01]
 
     user_change_map = {}
+
+    try:
+        price = float(price)
+        payment = float(payment)
+    except ValueError:
+        return "Error! Values are not numbers"
+
+    if payment < 0 or price < 0:
+        return "Error! Non-negative numbers"
+    
     change = (payment - price)
 
     change = round(change, 2)
@@ -81,7 +91,11 @@ def makeChange(price, payment, register_map):
                 register_map[amount] -= 1
 
                 user_change_map[amount] = user_change_map.get(amount, 0) + 1
-            
+        
+        if change > 0:
+            print("No money in register!")
+
+            return "No money in register!"
         '''
         # print(f"-- Final change -- ")
 
@@ -106,7 +120,8 @@ def makeChange(price, payment, register_map):
     return user_change_map
 
 register = init_curr_map()
-makeChange(0.89, 1.0, register)
+user_map = makeChange(5, 187.92, register)
 
 # print(str(currency_map))
+print(str(user_map))
     

@@ -1,4 +1,4 @@
 - Done - Test replenishRegister function
 - Done - Write register logic and UI
 - Done - Test register logic and UI
-- 
+- Test logic of having no money in register for change, see what happens

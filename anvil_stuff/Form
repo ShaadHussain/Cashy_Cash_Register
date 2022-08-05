@@ -62,6 +62,8 @@ class Form1(Form1Template):
         
     for amt in self.amounts:
       self.currency_map[amt] = 10
+    
+    self.currency_map[0.1] = 0
       
     self.setRegisFromMap()
     
