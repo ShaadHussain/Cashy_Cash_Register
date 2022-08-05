@@ -56,15 +56,16 @@ def makeChange(price, payment, register_map):
     user_change_map = {}
     change = (payment - price)
 
+    change = round(change, 2)
+
     print(f"Change b4 loop: {change}")
 
-    change = round(change, 2)
 
     if change > 0:
         
-        print(f"Register map before replenishing: {register_map}")
+        '''print(f"Register map before replenishing: {register_map}")
         # replenishRegister(price, register_map) # adds the payment - change to the register
-        print(f"Register map AFTER replenishing: {register_map}")
+        print(f"Register map AFTER replenishing: {register_map}")'''
 
         for amount in amounts:
             while change >= amount and register_map[amount] != 0:
@@ -81,21 +82,22 @@ def makeChange(price, payment, register_map):
 
                 user_change_map[amount] = user_change_map.get(amount, 0) + 1
             
+        '''
+        # print(f"-- Final change -- ")
 
-        print(f"-- Final change -- ")
-
-        for amount in amounts:
-            if amount >= 1.0:
-                print(f"Num of ${amount}: {user_change_map.get(amount, 0)}")
-            elif 0 <= amount < 1.0:
-                print(f"Num of {amount}¢: {user_change_map.get(amount, 0)}")
+        # for amount in amounts:
+        #     if amount >= 1.0:
+        #         print(f"Num of ${amount}: {user_change_map.get(amount, 0)}")
+        #     elif 0 <= amount < 1.0:
+        #         print(f"Num of {amount}¢: {user_change_map.get(amount, 0)}")
         
         replenishRegister(price, register_map) # adds the payment - change to the register
-
+        '''
         
     elif change < 0:
         print("Error! Payment is not sufficient.")
 
+        # user_change_map[-1] = -1
         # user_change_map = {}
 
     elif change == 0:
