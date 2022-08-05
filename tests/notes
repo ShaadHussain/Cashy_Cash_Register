@@ -1,2 +1,17 @@
 - Ask Jake whether you should replenish_register() before 
 or after you give the customer their change
+
+
+//
+      if float(self.lbl_1c_regis.text) < 0 or float(self.lbl_5c_regis.text) < 0
+          or float(self.lbl_10c_regis.text) < 0 
+          or float(self.lbl_25c_regis.text) < 0
+          or float(self.lbl_50c_regis.text) < 0
+          or float(self.label_1_dol_regis.text) < 0
+          or float(self.label_5_dol_regis.text) < 0
+          or float(self.label_10_dol_regis.text) < 0 
+          or float(self.label_20_dol_regis.text) < 0 {
+        
+      }
+
+//
