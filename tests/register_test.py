@@ -19,7 +19,7 @@ def init_curr_map():
 
     currency_map[0.01] = 10
     currency_map[0.05] = 10
-    currency_map[0.1] = 10
+    currency_map[0.1] = 0
     currency_map[0.25] = 10
     currency_map[0.5] = 10
     currency_map[1.0] = 10
@@ -29,54 +29,7 @@ def init_curr_map():
 
     return currency_map
 
-def get_register(file_name = "register.csv"):
-    with open('register.csv', mode='r+') as csv_file:
-        csv_reader = csv.reader(csv_file)
 
-        line_ct = 0
-
-        amt_num_map = {}
-
-        amounts = []
-        amounts_nums = []
-        for row in csv_reader:
-            if line_ct == 0:
-                line_ct += 1
-
-                amounts = list(row)
-                amounts = [int(num) for num in amounts]
-
-                print(f"Row 0: {amounts}")
-
-
-            elif line_ct == 1:
-                # amounts_nums = ",".join(row)
-                amounts_nums = list(row)
-
-                amounts_nums = [int(num) for num in amounts_nums]
-
-                print(f"Row 1: {amounts_nums}")
-                # line_ct += 1
-
-
-    for i in range(len(amounts)):
-        amt_num_map[amounts[i]] = amounts_nums[i]
-    
-    return amt_num_map
-
-def update_register(register_map):
-    with open('register.csv', 'w') as write_file:
-        writer = csv.writer(write_file)
-
-        header_row = []
-        val_row = []
-
-        for reg_key in register_map:
-            header_row.append(reg_key)
-            val_row.append(register_map[reg_key])
-
-        writer.writerow(header_row)
-        writer.writerow(val_row)
 
 # Taking the user's payment (deposit) and allocating it to register
 def replenishRegister(deposit, register_map):
@@ -111,20 +64,21 @@ def makeChange(price, payment, register_map):
     if change > 0:
         
         print(f"Register map before replenishing: {register_map}")
-        replenishRegister(price, register_map) # adds the payment - change to the register
+        # replenishRegister(price, register_map) # adds the payment - change to the register
         print(f"Register map AFTER replenishing: {register_map}")
 
-
         for amount in amounts:
-            while change >= amount and currency_map[amount] != 0:
+            while change >= amount and register_map[amount] != 0:
 
                 print(f"Curr amount: {amount}")
                 print(f"Curr change before: {change}")
 
                 change -= amount
 
+                print(f"Curr change after: {change}")
+
                 change = round(change, 2)
-                currency_map[amount] -= 1
+                register_map[amount] -= 1
 
                 user_change_map[amount] = user_change_map.get(amount, 0) + 1
             
@@ -136,6 +90,8 @@ def makeChange(price, payment, register_map):
                 print(f"Num of ${amount}: {user_change_map.get(amount, 0)}")
             elif 0 <= amount < 1.0:
                 print(f"Num of {amount}¢: {user_change_map.get(amount, 0)}")
+        
+        replenishRegister(price, register_map) # adds the payment - change to the register
 
         
     elif change < 0:
@@ -143,10 +99,12 @@ def makeChange(price, payment, register_map):
 
     elif change == 0:
         print("No change")
+    
+    return user_change_map
 
 
 register = init_curr_map()
-makeChange(300.37, 500.34, register)
+makeChange(0.89, 1.0, register)
 
 # print(str(currency_map))
     
