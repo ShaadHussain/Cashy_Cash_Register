@@ -1,5 +1,5 @@
 # Ca$hy! - A Cash Register for all your "changing" needs
-Welcome Benetech team! To use the app, please visit this [link](https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK).
+Welcome! To use the app, please visit this [link](https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK).
 
 ## About 
 Ca$hy is a cash register web app that takes a given price and payment and outputs the change in the least amount of coins/bills.
