@@ -1,6 +1,6 @@
 # Welcome to Ca$hy! - A Cash Register for all your "changing" needs
 
-To use the app, please visit this [link].(https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK)
+To use the app, please visit this [link](https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK).
 
 The app was written in Python and uses Anvil, a Python-only full-stack framework for building and publishing web apps quickly. 
 
