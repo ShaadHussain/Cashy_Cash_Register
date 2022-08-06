@@ -31,3 +31,4 @@ possible transactions for the changemaking function.
 
 
 
+That's about it, please enjoy the app! If you have any feedback, please feel free to let me know. Thank you!
