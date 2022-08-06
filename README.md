@@ -1,7 +1,7 @@
 # Ca$hy! - A Cash Register for all your "changing" needs
 Welcome Benetech team! To use the app, please visit this [link](https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK).
 
-##About 
+## About 
 Ca$hy is a cash register web app that takes a given price and payment and outputs the change in the least amount of coins/bills.
 
 The app was written in Python and uses Anvil, a Python-only full-stack framework for building and publishing web apps quickly. 
