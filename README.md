@@ -1,12 +1,12 @@
-### Welcome to Ca$hy! - A Cash Register for all your "changing" needs
+# Welcome to Ca$hy! - A Cash Register for all your "changing" needs
 
-To use the app, please visit [this link](https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK)
+To use the app, please visit this [link].(https://O3QIP6IQVRRRSRXS.anvil.app/MLA4SG3FOOJRTPCNLX5CVKWK)
 
-The app was written in Python and uses Anvil, an only-Python framework for building apps quickly. 
+The app was written in Python and uses Anvil, a Python-only full-stack framework for building and publishing web apps quickly. 
 
 ## Assumptions
 
-There were a couple of assumptions made for the design of this app:
+There were a couple of assumptions made for the design of this app.
 
 The first is that I assumed that when a transaction was conducted, the register would be replenished *after* the change was given out. 
 This coincides with the example given in the description of the transaction of $1 - 0.89¢ with zero dimes in the register. 
@@ -15,9 +15,8 @@ a return value of 2 nickels and 1 penny, indicating that the register should be 
 
 The second assumption is that the user has the ability to update the register. Although this wasn't explicitly specified in the project description, 
 it made sense for testing purposes because the user may want to simulate different scenarios where the register may not have a certain amount of one coin/bill,
-and they would need to compensate with other coins/bills. This makes sense for the aforementioned example of $1 - 0.89¢ with no dimes. Or, if they wanted to
-see the amount they would get back with no shortages, they could simply update the register currencies with the balances of their choice. All in all, it made
-more sense to have more flexibility in this area as opposed to less.
+and they would need to compensate with other coins/bills. To see why this might be necessary, take the prior example of $1 - 0.89¢ with no dimes in the register. For this to work and return 2 nickels and 1 penny, the default number of dimes in the register would have to be 0. But does the user want
+the number of dimes to be 0 for all of the transactions they test? Probably not, they may wish to see the amount they would get back with no shortages. All in all, it made more sense to have more flexibility in this area as opposed to less.
 
 
 ## Testing
@@ -26,4 +25,7 @@ while the code is not verbatim the code written for the Anvil app (see anvil_app
 are due implementing the logic within Anvil's UI components. 
 
 The testing framework used was pytest, and the unit tests test the change logic, the register replenishing logic, invalid input, and a variety of 
-possible transactions for the function. 
+possible transactions for the changemaking function. 
+
+
+
