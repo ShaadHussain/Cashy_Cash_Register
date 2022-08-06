@@ -1,6 +1,5 @@
 import csv
 
-
 currency_map = {}
 
 def init_curr_map():

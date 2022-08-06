@@ -95,9 +95,9 @@ class Form1(Form1Template):
   def makeChange(self, price, payment):
     user_change_map = {}
     
-    if payment < 0 or price < 0:
-      print("Error! Negative values.")
-      self.showErrorMsg("Error! Negative values.")
+    if payment <= 0 or price <= 0:
+      print("Error! Negative or zero values.")
+      self.showErrorMsg("Error! Negative or zero values.")
       return user_change_map
     
     change = (payment - price)

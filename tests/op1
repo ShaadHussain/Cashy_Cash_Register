@@ -1,13 +1,74 @@
-Package    Version
----------- -------
-attrs      22.1.0
-iniconfig  1.1.1
-packaging  21.3
-pip        22.1.1
-pluggy     1.0.0
-py         1.11.0
-pyparsing  3.0.9
-pytest     7.1.2
-setuptools 62.3.2
-tomli      2.0.1
-wheel      0.37.1
+============================= test session starts ==============================
+platform darwin -- Python 3.9.13, pytest-7.1.2, pluggy-1.0.0
+rootdir: /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests
+collected 16 items
+
+register_test.py ................                                        [100%]
+
+=============================== warnings summary ===============================
+register_test.py:5
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.one - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.one
+
+register_test.py:18
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.two - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.two
+
+register_test.py:31
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:31: PytestUnknownMarkWarning: Unknown pytest.mark.three - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.three
+
+register_test.py:44
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:44: PytestUnknownMarkWarning: Unknown pytest.mark.four - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.four
+
+register_test.py:58
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:58: PytestUnknownMarkWarning: Unknown pytest.mark.five - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.five
+
+register_test.py:72
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:72: PytestUnknownMarkWarning: Unknown pytest.mark.six - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.six
+
+register_test.py:86
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:86: PytestUnknownMarkWarning: Unknown pytest.mark.seven - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.seven
+
+register_test.py:102
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:102: PytestUnknownMarkWarning: Unknown pytest.mark.eight - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.eight
+
+register_test.py:118
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:118: PytestUnknownMarkWarning: Unknown pytest.mark.nine - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.nine
+
+register_test.py:137
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:137: PytestUnknownMarkWarning: Unknown pytest.mark.ten - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.ten
+
+register_test.py:155
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:155: PytestUnknownMarkWarning: Unknown pytest.mark.eleven - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.eleven
+
+register_test.py:170
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:170: PytestUnknownMarkWarning: Unknown pytest.mark.twelve - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.twelve
+
+register_test.py:186
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:186: PytestUnknownMarkWarning: Unknown pytest.mark.thirteen - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.thirteen
+
+register_test.py:202
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:202: PytestUnknownMarkWarning: Unknown pytest.mark.fourteen - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fourteen
+
+register_test.py:219
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:219: PytestUnknownMarkWarning: Unknown pytest.mark.fifteen - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.fifteen
+
+register_test.py:238
+  /Users/shaadhussain/Desktop/Interviews/benetech_interview/tests/register_test.py:238: PytestUnknownMarkWarning: Unknown pytest.mark.sixteen - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.sixteen
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 16 passed, 16 warnings in 0.04s ========================
