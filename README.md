@@ -29,6 +29,12 @@ are due to implementing the logic within Anvil's UI components.
 The testing framework used was pytest, and the unit tests test the change logic, the register replenishing logic, invalid input, and a variety of 
 possible transactions for the changemaking function. Manual testing was also performed on the Anvil GUI. 
 
+## Design and Development Decisions
+
+There are some design/development decisions I felt were worth commenting on. The first and perhaps the most obvious one is the choice to use Anvil to create and deploy my app. While I had initially had my mind set on Flask due to my past experience with it, I researched other tools anyway and wound up discovering Anvil. Being a full-stack Python tool where I could essentially write everything in Python and publish in a matter of seconds, Anvil seemed like the perfect solution for building Ca$hy. Its drag-and-drop interface meant I wouldn’t have to worry as much about tinkering with front-end code and databases, which would allow me to focus on getting an app up and running as quickly as possible and iterating just as quickly. 
+
+The great thing was that using Anvil was indeed fast. I could toy with changes and iterate on the app quickly, and publish and test easily. However, given that Anvil is still a fairly young technology, a major downside to it is its lack of flexibility. This is especially in regard to front-end design. The drag-and-drop interface ended up being a double-edged sword, as Anvil doesn’t allow the developer much access to the CSS it builds the UI on (the feature had been available in the past but was disabled), and as a result I wasn’t able to build the UI I had in mind, instead being relegated to some preset templates and fonts. While I was able to manage to design and fit in a logo thanks to Canva, I do wish I had more flexibility to toy around with the CSS that working with Flask and a traditional front-end framework like React would have provided me in order to achieve a more modern design. Despite this, Anvil is still a great tool and I’m glad I discovered it, and I’m sure it will evolve to the point where it gives the developer greater control over their app’s look and feel. 
+
 
 ---
 That's about it, please enjoy the app! If you have any feedback, please feel free to let me know. Thank you!
