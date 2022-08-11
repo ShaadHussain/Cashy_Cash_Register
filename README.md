@@ -22,8 +22,8 @@ the number of dimes to be 0 for all of the transactions they test? Probably not,
 
 
 ## Testing
-To view unit tests for this app, please view tests/register_test.py. This file tests the corresponding register.py in the same directory. Please note that
-while the code is not verbatim the code written for the Anvil app (see anvil_app_files/Form for that), the logic is exactly the same and the only differences
+To view unit tests for this app, please view tests/register_test.py. This file tests the corresponding register.py in the same directory. Register.py contains all the logic used in the app.Please note that
+while the code in register.py is not verbatim the code written for the Anvil app (see anvil_app_files/Form for that), the logic is exactly the same and the only differences
 are due to implementing the logic within Anvil's UI components. 
 
 The testing framework used was pytest, and the unit tests test the change logic, the register replenishing logic, invalid input, and a variety of 
