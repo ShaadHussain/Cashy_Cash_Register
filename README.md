@@ -4,7 +4,7 @@ Welcome! To use Ca$hy, please visit this [link](https://O3QIP6IQVRRRSRXS.anvil.a
 ## About 
 Ca$hy is a cash register web app that takes a given price and payment and outputs the change in the least amount of coins/bills.
 
-The app was written in Python and uses Anvil, a Python-only full-stack framework for building and publishing web apps quickly. 
+The app was written in Python and uses [Anvil](https://anvil.works/), a Python-only full-stack framework for building and publishing web apps quickly. 
 
 ## Assumptions
 
